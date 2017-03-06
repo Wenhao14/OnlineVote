@@ -1,0 +1,21 @@
+
+.opera{
+	width: 200px;
+	margin: 0 auto;
+	margin-left: 0;
+    float: left;
+}
+#btn
+{
+	width: 100px;
+	height: 36px;
+	line-height:36px;
+	background-color:#14A5EB;
+	color: #fff;
+	font-size: 14px;
+	font-family: Microsoft YaHei;
+	cursor: pointer;
+	display:block;
+	text-align:center;
+	padding-bottom:0 px;
+}

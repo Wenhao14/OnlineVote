@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.olv.domain.Theme" table="THEME" schema="KESHE">
+        <id name="tid" type="java.math.BigDecimal">
+            <column name="TID" precision="22" scale="0" />
+        </id>
+        <many-to-one name="users" class="com.olv.domain.Users" fetch="select">
+            <column name="USERID" precision="22" scale="0" not-null="true" />
+        </many-to-one>
+        <property name="details" type="java.lang.String">
+            <column name="DETAILS" length="200" not-null="true" />
+        </property>
+        <property name="lasttime" type="java.sql.Timestamp">
+            <column name="LASTTIME" length="7" not-null="true" />
+        </property>
+        <property name="state" type="java.lang.String">
+            <column name="STATE" length="4" not-null="true" />
+        </property>
+        <property name="type" type="java.lang.Byte">
+            <column name="TYPE" precision="2" scale="0" not-null="true" />
+        </property>
+        <set name="optionses" inverse="true">
+            <key>
+                <column name="TID" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.olv.domain.Options" />
+        </set>
+    </class>
+</hibernate-mapping>

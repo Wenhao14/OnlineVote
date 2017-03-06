@@ -1,0 +1,16 @@
+.clear {clear:both; line-height:0; height:0; font-size:1px;}
+.center {width:980px; margin:0 auto; min-height:1px;}
+body {font:12px Arial, Helvetica, sans-serif; }
+html,body {height:100%;}
+.wrap_it_all {min-height:100%;}
+* html .wrap_it_all {height:100%;}
+#slider  {clear:both; height:346x; padding:160px 0 0 50px; width:980px; overflow:hidden;}
+.slider_area {}
+.slider_carousel {position:absolute; width:960px;}
+.roundabout-holder  {padding:0; height:400px; position:absolute; width:890px; margin:0 0 0 55px;}
+.roundabout-moveable-item {border:0; list-style:none; width:433px; height:326px; -moz-box-shadow:0px 20px 20px -10px #000000; box-shadow:0px 20px 20px -10px #000000; -webkit-box-shadow:0px 20px 20px -10px #000000;}
+.roundabout-moveable-item img {width:100%; height:100%; display:block;}
+.round_conrol {position:relative; width:198px; margin:0 auto; height:34px; padding:0 0 0 0;}
+#bt-previous {position:absolute; width:34px; height:34px; display:block !important; background:url(../images/fan_left.png) no-repeat left; left:0; top:0; cursor:pointer; text-indent:-9999px;}
+#bt-next {position:absolute; width:34px; height:34px; display:block !important; background:url(../images/fan_right.png) no-repeat left; right:0; top:0; cursor:pointer; text-indent:-9999px;}
+.round_but {position:absolute; display:block; width:24px; height:22px;cursor:pointer;}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.olv.domain.Address" table="ADDRESS" schema="KESHE">
+        <id name="aid" type="java.math.BigDecimal">
+            <column name="AID" precision="22" scale="0" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" length="50" not-null="true" />
+        </property>
+        <set name="votes" inverse="true">
+            <key>
+                <column name="AID" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.olv.domain.Vote" />
+        </set>
+    </class>
+</hibernate-mapping>

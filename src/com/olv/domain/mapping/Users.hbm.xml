@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.olv.domain.Users" table="USERS" schema="KESHE">
+        <id name="userid" type="java.math.BigDecimal">
+            <column name="USERID" precision="22" scale="0" />
+        </id>
+        <property name="grade" type="java.lang.Byte">
+            <column name="GRADE" precision="2" scale="0" not-null="true" />
+        </property>
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" length="50" not-null="true" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" length="50" not-null="true" />
+        </property>
+        <property name="tean" type="java.lang.String">
+            <column name="TEAN" length="50" not-null="true" />
+        </property>
+        <set name="themes" inverse="true">
+            <key>
+                <column name="USERID" precision="22" scale="0" not-null="true" />
+            </key>
+            <one-to-many class="com.olv.domain.Theme" />
+        </set>
+    </class>
+</hibernate-mapping>

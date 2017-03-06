@@ -1,0 +1,14 @@
+  #finish {
+     display:none;
+          }
+
+	.check{
+		width: 60%;
+		margin-left: 20%;	
+	}
+.bottom-left{
+	padding-bottom: 0px;
+}
+ul,li{
+list-style: none;
+}

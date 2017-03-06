@@ -1,0 +1,20 @@
+ .panel-heading{padding:1px 25px;border-radius: 3px;background-color: #337AB7;height: 40px;}
+ .panel-title{font-size:16px;color:whitesmoke;margin-top: 8px;}
+
+ 
+ .votearea{margin-top:100px;margin-left: 40%;}
+ .votetheme{padding-top: 30px;}
+ .optionnum{margin-top: 35px;}
+ .votetype{margin-top: 35px;}
+ .date{margin-top: 35px;}
+ .nextstep{margin-top: 80px;}
+ .buttonstep{margin-left: 900px; margin-top: 100px; width: 80px;height: 40px;border-radius: 5px; background-color: lemonchiffon;}
+.select{height: 33px;} 
+.datee{height: 33px;}
+
+
+.secondtheme{margin-top: 100px;text-align: center;height: 80px;}
+.zhutiziti{font-size: 25px;}
+.buttonstep1{margin-left: 300px;  margin-top: 100px;   width: 80px;height: 40px;border-radius: 5px;background-color: lemonchiffon;}
+.buttonstep2{margin-left: 500px;width: 80px;height: 40px;border-radius: 5px;background-color: lemonchiffon;}
+.liebiao{margin-left: 40%;}

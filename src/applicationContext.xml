@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd" xmlns:tx="http://www.springframework.org/schema/tx">
+    <!-- 通过注解方式管理事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+    <!-- 配置数据源 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	    <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+	    <property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:orcl"/>
+	    <property name="username" value="keshe"/>
+	    <property name="password" value="wang19950420"/>
+	     <!-- 连接池启动时的初始值 -->
+		<property name="initialSize" value="30"/>
+	 	<!-- 连接池的最大值 -->
+	 	<property name="maxActive" value="500"/> 
+ 		<!-- 最大空闲值.当经过一个高峰时间后，连接池可以慢慢将已经用不到的连接慢慢释放一部分，一直减少到maxIdle为止 -->
+		<property name="maxIdle" value="2"/>
+		<!--  最小空闲值.当空闲的连接数少于阀值时，连接池就会预申请去一些连接，以免洪峰来时来不及申请 -->
+		<property name="minIdle" value="1"/>
+      </bean>
+     <!-- 配置会话工厂() -->
+     <bean id="sessionFactory"  class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+          <!-- 设置数据源 -->
+         <property name="dataSource" ref="dataSource"/>
+         <!-- 接管了hibernate对象映射文件 -->
+         <property name="mappingResources">
+             <list>
+                 <value>com/olv/domain/mapping/Users.hbm.xml</value>
+                 <value>com/olv/domain/mapping/Options.hbm.xml</value>
+                 <value>com/olv/domain/mapping/Theme.hbm.xml</value>
+                 <value>com/olv/domain/mapping/Vote.hbm.xml</value>
+                 <value>com/olv/domain/mapping/Address.hbm.xml</value>
+            </list>
+	     </property>
+	     <property name="hibernateProperties">
+		     <value>
+		        	hibernate.dialect=org.hibernate.dialect.MySQLDialect
+		        	<!-- 可以自动建表 -->
+		        	hibernate.hbm2ddl.auto=update
+					hibernate.show_sql=true
+					<!-- 配置二级缓存 -->
+					<!-- 开启二级缓存 -->
+					hibernate.cache.use_second_level_cache=true
+					<!-- 启用查询缓存
+					hibernate.cache.use_query_cache=true
+					 高速缓存提供程序 
+					hibernate.cache.region.factory_class=net.sf.ehcache.hibernate.EhCacheRegionFactory
+	        	            设置二级缓存插件EHCache的Provider类 
+	        	    hibernate.cache.provider_class=net.sf.ehcache.hibernate.EhCacheProvider
+	        	    -->
+	        	    <!-- 收集有助性能调节的统计数据 -->
+	        	    hibernate.generate_statistics=true	      
+		     </value>
+         </property>
+    </bean>
+	<!-- 配置统一事务管理 -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+    <!-- 配置Service bean -->
+     <bean id="voteService" class="com.olv.service.VoteService">
+         <property name="sessionFactory" ref="sessionFactory"/>
+     </bean>
+     <bean id="userService" class="com.olv.service.UserService">
+         <property name="sessionFactory" ref="sessionFactory"/>
+     </bean>
+     <bean id="adminService" class="com.olv.service.AdminService">
+         <property name="sessionFactory" ref="sessionFactory"/>
+     </bean>
+     <bean id="chartService" class="com.olv.service.ChartService">
+         <property name="voteService" ref="voteService"/>
+     </bean>
+     <!-- 配置 Action bean -->
+      <bean id="voteAction" class="com.olv.action.VoteAction">
+         <property name="voteService" ref="voteService"/>
+         <property name="chartService" ref="chartService"/>
+      </bean>
+      <bean id="usersAction" class="com.olv.action.UsersAction">
+         <property name="userService" ref="userService"/>
+      </bean>
+      <bean id="adminAction" class="com.olv.action.AdminAction">
+         <property name="adminService" ref="adminService"/>
+      </bean>
+    </beans>

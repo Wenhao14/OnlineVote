@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+  <constant name="struts.action.extension" value="do"/>
+     <package name="votething" extends="json-default">
+        <action name="voteAction" class="com.olv.action.VoteAction">
+              <result name="getThemeSuccess">/WEB-INF/page/home.jsp</result>
+              <result name="getThemeFail">/WEB-INF/page/fail/erro.jsp</result>
+              <result name="getSuccess">/WEB-INF/page/votePage.jsp</result>
+              <result name="getFail">/WEB-INF/page/fail/erro.jsp</result>
+              <result name="addVoteSuccess" type="json"><param name="root">message</param></result>
+              <result name="addVoteFail" type="json"><param name="root">message</param></result>
+        </action>
+     </package>
+     <package name="userthing" extends="json-default">
+         <action name="usersAction" class="com.olv.action.UsersAction">
+              <result name="uLognSuccess" type="json"><param name="root">message</param></result>
+              <result name="uLognFail" type="json"><param name="root">message</param></result>
+              <result name="addThemeSuccess" type="json"><param name="root">message</param></result>
+              <result name="addThemeFail" type="json"><param name="root">message</param></result>
+              <result name="addUserSuccess" type="json"><param name="root">message</param></result>
+              <result name="addUserFail" type="json"><param name="root">message</param></result>
+              <result name="dump">/WEB-INF/page/userManage.jsp</result>
+              <result name="alterSuccess" type="json"><param name="root">message</param></result>
+              <result name="alterFail" type="json"><param name="root">message</param></result>
+              <result name="deleteSuccess" type="json"><param name="root">message</param></result>
+              <result name="deleteFail" type="json"><param name="root">message</param></result>
+         </action>
+     </package>
+     <package name="adminthing" extends="json-default">
+          <action name="adminAction" class="com.olv.action.AdminAction">
+            
+               <result name="aLognSuccess" type="json"><param name="root">message</param></result>
+               <result name="aLognFail" type="json"><param name="root">message</param></result>
+               <result name="alterSuccess" type="json"><param name="root">message</param></result>
+               <result name="alterFail" type="json"><param name="root">message</param></result>
+               <result name="getNoSuccess">/WEB-INF/page/adminManage.jsp</result>
+               <result name="getNoFail">/WEB-INF/page/adminManage.jsp</result>
+          </action>
+     </package>
+</struts>    
